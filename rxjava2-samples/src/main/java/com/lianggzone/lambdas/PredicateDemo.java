@@ -1,10 +1,5 @@
 package com.lianggzone.lambdas;
 
-import com.sun.deploy.util.StringUtils;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class PredicateDemo {

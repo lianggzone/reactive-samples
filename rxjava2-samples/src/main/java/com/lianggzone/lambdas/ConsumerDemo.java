@@ -1,7 +1,6 @@
 package com.lianggzone.lambdas;
 
 import java.util.function.Consumer;
-import java.util.function.Predicate;
 
 public class ConsumerDemo {
 
