@@ -10,34 +10,9 @@ import java.util.concurrent.TimeUnit;
 
 public class HotObservable {
     public static void main(String[] args) {
-        Consumer<Long> consumer1 = a -> System.out.println("consumer1:"+a);
-        Consumer<Long> consumer2 = a -> System.out.println("consumer2:"+a);
-        Consumer<Long> consumer3 = a -> System.out.println("consumer3:"+a);
-
-        ConnectableObservable<Long> observable = Observable.create((ObservableOnSubscribe<Long>) e -> {
-            Observable.interval(10, TimeUnit.MICROSECONDS, Schedulers.computation())
-                    .take(Integer.MAX_VALUE)
-                    .subscribe(e::onNext);
-        }).observeOn(Schedulers.newThread()).publish();
-
+        ConnectableObservable<String> observable = Observable.just("Liang", "Gzone").publish();
+        observable.subscribe(s -> System.out.println("consumer1:" + s));
+        observable.subscribe(s -> System.out.println("consumer2:" + s));
         observable.connect();
-
-        observable.subscribe(consumer1);
-        observable.subscribe(consumer2);
-
-        try{
-            Thread.sleep(10L);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-        observable.subscribe(consumer3);
-
-        try{
-            Thread.sleep(20L);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
     }
 }

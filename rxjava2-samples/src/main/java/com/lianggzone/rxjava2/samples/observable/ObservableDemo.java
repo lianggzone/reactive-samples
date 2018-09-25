@@ -8,9 +8,7 @@ public class ObservableDemo {
     public static void main(String[] args) {
         Observable<String> observable = Observable.create(emitter -> {
             emitter.onNext("Hello World");
-            emitter.onNext("Hello World");
             emitter.onComplete();
-            emitter.onNext("Hello World");
         });
 
         Observer<String> observer = new Observer<String>() {
